@@ -5,6 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "npx nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/RuYi-Shen/projeto-driveneletro_back/issues"
   },
-  "homepage": "https://github.com/RuYi-Shen/projeto-driveneletro_back#readme"
+  "homepage": "https://github.com/RuYi-Shen/projeto-driveneletro_back#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "mongodb": "^4.5.0",
+    "nodemon": "^2.0.16",
+    "uuid": "^8.3.2"
+  }
 }
