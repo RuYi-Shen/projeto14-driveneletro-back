@@ -3,14 +3,14 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import db from "./db.js"
-// import authRouter from './routes/authRouter.js';
+import authRouter from './routes/authrouter.js';
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(json());
 
-// app.use(authRouter);
+app.use(authRouter);
 
 app.get("/", async (req, res) => {
   console.log("tá pegando");
