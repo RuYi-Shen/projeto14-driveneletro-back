@@ -2,8 +2,9 @@ import express, { json } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import db from "./db.js"
 import authRouter from './routes/authrouter.js';
+import getProductsRouter from "./routes/getProductsRouter.js";
+import shoppingCartRouter from "./routes/shoppingCartRouter.js";
 
 dotenv.config();
 const app = express();
@@ -12,17 +13,9 @@ app.use(json());
 
 app.use(authRouter);
 
-app.get("/", async (req, res) => {
-  console.log("tá pegando");
-  try {
-    const a = await db.collection("products").find().toArray();
+app.use(getProductsRouter);
 
-    res.status(200).send(a);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-})
+app.use(shoppingCartRouter);
 
 // ABAIXO TESTE E ROTA USADA PARA PREENCHER db.products
 
