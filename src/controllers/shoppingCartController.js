@@ -9,3 +9,14 @@ export async function getShoppingCart(req, res) {
 }
 
 // AQUI DEVE VIR O postShoppingCart
+export async function postShoppingCart(req, res) {
+    const { userShoppingCart } = res.locals;
+    try {
+        await db.collection("shoppingCarts").updateOne({ userId: userShoppingCart.userId },
+            { $set: { shoppingCart: req.body } });
+        res.status(201).send("Shopping Cart updated!");
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
