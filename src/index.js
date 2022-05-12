@@ -2,7 +2,7 @@ import express, { json } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import authRouter from './routes/authrouter.js';
+import authRouter from './routes/authRouter.js';
 import getProductsRouter from "./routes/getProductsRouter.js";
 import shoppingCartRouter from "./routes/shoppingCartRouter.js";
 

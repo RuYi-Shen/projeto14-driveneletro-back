@@ -21,5 +21,21 @@ export async function signUp(req, res) {
   }
 }
 
+export async function signIn(req, res) {
+  const { name, _id } = res.locals.user;
+
+  try {
+    const token = uuid();
+    await db.collection("sessions").insertOne({
+      token,
+      userId: _id,
+    });
+    res.json({ token, name });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+}
+
 
 
