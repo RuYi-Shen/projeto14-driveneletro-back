@@ -7,12 +7,12 @@ export async function validateProducts(req, res, next) {
 
   try {
     const products = await db.collection("products").find({}).toArray();
-    const productsList = products.map((product) => product._id);
+    const productsList = products.map((product) => product.product);
     
     boughtProducts.forEach((product) => {
         productSchema.validate(product);
 
-        if (!productsList.includes(product.productId)) {
+        if (!productsList.includes(product.product)) {
             throw new Error(`Product ${product.product} not found.`);
         }
     });
