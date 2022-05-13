@@ -1,3 +1,5 @@
+import db from "./../db.js";
+
 export async function getShoppingCart(req, res) {
     const { userShoppingCart } = res.locals
     try {
@@ -10,9 +12,9 @@ export async function getShoppingCart(req, res) {
 
 // AQUI DEVE VIR O postShoppingCart
 export async function postShoppingCart(req, res) {
-    const { userShoppingCart } = res.locals;
+    const { session } = res.locals;
     try {
-        await db.collection("shoppingCarts").updateOne({ userId: userShoppingCart.userId },
+        await db.collection("shoppingCarts").updateOne({ userId: session.userId },
             { $set: { shoppingCart: req.body } });
         res.status(201).send("Shopping Cart updated!");
     } catch (error) {
