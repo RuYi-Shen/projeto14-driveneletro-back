@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import authRouter from './routes/authRouter.js';
 import getProductsRouter from "./routes/getProductsRouter.js";
 import shoppingCartRouter from "./routes/shoppingCartRouter.js";
+import checkOutRouter from "./routes/checkOutRouter.js";
 
 dotenv.config();
 const app = express();
@@ -16,6 +17,8 @@ app.use(authRouter);
 app.use(getProductsRouter);
 
 app.use(shoppingCartRouter);
+
+app.use(checkOutRouter);
 
 // ABAIXO TESTE E ROTA USADA PARA PREENCHER db.products
 
