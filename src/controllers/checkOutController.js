@@ -2,7 +2,7 @@
 
 import db from "../db.js";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 export async function checkOut(req, res) {
   const { date, boughtProducts } = req.body;
