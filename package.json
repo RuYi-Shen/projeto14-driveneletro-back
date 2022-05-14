@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/RuYi-Shen/projeto-driveneletro_back#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.6.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
