@@ -22,7 +22,6 @@ export async function checkOut(req, res) {
       totalPaid,
       boughtProducts
     });
-    await db.collection("shoppingCarts").updateOne({ userId }, { $set: { shoppingCart: [] } });
 
     const msg = {
       to: email,
@@ -35,11 +34,17 @@ export async function checkOut(req, res) {
       })}`
     };
 
-    await sgMail.send(msg)
+    await sgMail.send(msg);
+
+    await db.collection("shoppingCarts").updateOne({ userId }, { $set: { shoppingCart: [] } });
 
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
+    
+    if (error.response) {
+      console.error(error.response.body)
+    }
   }
 }
