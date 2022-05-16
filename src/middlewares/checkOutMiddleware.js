@@ -8,22 +8,22 @@ export async function validateProducts(req, res, next) {
   try {
     const products = await db.collection("products").find({}).toArray();
     const productsList = products.map((product) => product.product);
-    
-    boughtProducts.forEach((product) => {
-        productSchema.validate(product);
 
-        if (!productsList.includes(product.product)) {
-            throw new Error(`Product ${product.product} not found.`);
-        }
+    boughtProducts.forEach((product) => {
+      productSchema.validate(product);
+
+      if (!productsList.includes(product.product)) {
+        throw new Error(`Product ${product.product} not found.`);
+      }
     });
 
     next();
   } catch (error) {
     console.log(error);
     if (error.name === "ValidationError") {
-        res.status(400).send(error.details.map((e) => e.message));
+      res.status(400).send(error.details.map((e) => e.message));
     } else {
-        res.status(500).send(error.message);
+      res.status(500).send(error.message);
     }
   }
 }

@@ -10,7 +10,6 @@ export async function getShoppingCart(req, res) {
     }
 }
 
-// AQUI DEVE VIR O postShoppingCart
 export async function postShoppingCart(req, res) {
     const { session } = res.locals;
     try {

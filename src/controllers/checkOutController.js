@@ -42,9 +42,5 @@ export async function checkOut(req, res) {
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
-    
-    // if (error.response) {
-    //   console.error(error.response.body)
-    // }
   }
 }
